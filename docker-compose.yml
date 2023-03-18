@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  db:
+    image: postgres:14.1
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: diplom_user
+      POSTGRES_DB: diplom_db
+    ports:
+      - "5431:5432"
+
+
+
+
