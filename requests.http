@@ -1,0 +1,83 @@
+POST http://127.0.0.1:8000/api/v1/user/register
+content-type: application/json
+
+{"first_name": "test", "last_name": "test", "email": "supersidorenko@yandex.ru", "password": "TestPassword12345", "company": "test", "position": "test"}
+
+###
+
+GET http://127.0.0.1:8000/api/v1/categories
+
+###
+
+GET http://127.0.0.1:8000/api/v1/products
+
+###
+
+GET http://127.0.0.1:8000/api/v1/products/3
+
+###
+
+
+GET http://127.0.0.1:8000/api/v1/basket
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+###
+
+POST http://127.0.0.1:8000/api/v1/basket
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+{"items": "[{\"product_info\":1, \"quantity\": 1},{\"product_info\":2, \"quantity\": 2}]"}
+
+###
+
+PUT http://127.0.0.1:8000/api/v1/basket
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+{"items": "[{\"id\":1, \"quantity\": 2}]"}
+
+###
+
+DELETE http://127.0.0.1:8000/api/v1/basket
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+{"items": "4"}
+
+###
+
+GET http://127.0.0.1:8000/api/v1/user/contact
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+###
+
+POST http://127.0.0.1:8000/api/v1/user/contact
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+{"city": "Екатеринбург", "street": "Кирова, 1", "phone": "+79000000000"}
+
+###
+
+GET http://127.0.0.1:8000/api/v1/order
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+###
+
+POST http://127.0.0.1:8000/api/v1/order
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+{"id": "4", "contact": 1}
+
+###
+
+GET http://127.0.0.1:8000/api/v1/order/new
+content-type: application/json
+Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+
+###
