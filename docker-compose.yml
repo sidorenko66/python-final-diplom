@@ -1,4 +1,6 @@
 version: '3.1'
+networks:
+  net:
 services:
   db:
     image: postgres:14.1
@@ -6,9 +8,30 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: diplom_user
       POSTGRES_DB: diplom_db
+    networks:
+      - net
     ports:
       - "5433:5432"
 
+  app:
+    build: .
+    networks:
+      - net
+    ports:
+      - "8000:8000"
+    # command: >
+    #   sh -c "python manage.py migrate &&
+    #   python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
 
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
 
-
+  # celery:
+  #   build: .
+  #   command: celery -A orders worker
+  #   depends_on:
+  #     - redis

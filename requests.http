@@ -5,6 +5,21 @@ content-type: application/json
 
 ###
 
+POST http://127.0.0.1:8000/api/v1/user/login
+content-type: application/json
+
+{"email": "supersidorenko@yandex.ru", "password": "TestPassword12345"}
+
+###
+
+POST http://127.0.0.1:8000/api/v1/partner/update
+content-type: application/json
+Authorization: token e86a64cf093e68722a5aa9dab7518b51ad24fa56
+
+{"url": "https://www.helpanimals.ru/shop1.yaml"}
+
+###
+
 GET http://127.0.0.1:8000/api/v1/categories
 
 ###
@@ -20,7 +35,7 @@ GET http://127.0.0.1:8000/api/v1/products/3
 
 GET http://127.0.0.1:8000/api/v1/basket
 content-type: application/json
-Authorization: token 8e96eabfff737bc7efb6fb65db79e628fa44ca18
+Authorization: token e86a64cf093e68722a5aa9dab7518b51ad24fa56
 
 ###
 
