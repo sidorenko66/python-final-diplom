@@ -87,8 +87,8 @@ DATABASES = {
         'NAME': 'diplom_db',
         'USER': 'diplom_user',
         'PASSWORD': 'password',
-        'HOST': 'db',
-        'PORT': '5433',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 

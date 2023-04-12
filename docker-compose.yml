@@ -1,8 +1,8 @@
-version: '3.1'
+version: '3.9'
 networks:
   net:
 services:
-  db:
+  postgredb:
     image: postgres:14.1
     environment:
       POSTGRES_PASSWORD: password
@@ -11,17 +11,17 @@ services:
     networks:
       - net
     ports:
-      - "5433:5432"
+      - "5432:5432"
 
   app:
     build: .
+    container_name: app-c
     networks:
       - net
     ports:
       - "8000:8000"
     depends_on:
-      - db
-    restart: unless-stopped
+      - postgredb
 
   redis:
     image: redis
