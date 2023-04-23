@@ -13,14 +13,19 @@ from rest_framework.authtoken.models import Token
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from ujson import loads as load_json
 from yaml import load as load_yaml, Loader
+from rest_framework import permissions
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.permissions import IsAuthenticated
 
 from backend.models import Shop, Category, Product, ProductInfo, Parameter, ProductParameter, Order, OrderItem, \
     Contact, ConfirmEmailToken
 from backend.serializers import ProductSerializer, UserSerializer, CategorySerializer, ShopSerializer, ProductInfoSerializer, \
     OrderItemSerializer, OrderSerializer, ContactSerializer
 from backend.signals import new_user_registered, new_order
+from backend.permissions import IsOwnerOrAdmin
 
 
 class RegisterAccount(APIView):
@@ -202,6 +207,18 @@ class ProductView(APIView):
         serializer = ProductSerializer(product)
         return Response(serializer.data)
 
+
+class ProductInfoViewSet(ModelViewSet):
+    queryset = ProductInfo.objects.all()
+    serializer_class = ProductInfoSerializer
+    filter_backends = [DjangoFilterBackend,]
+    filterset_fields = ['shop_id',]
+
+    def get_permissions(self):
+        """Получение прав для действий."""
+        if self.action in ["create", "update", "partial_update", "destroy"]:
+            return [IsAuthenticated(), IsOwnerOrAdmin()]
+        return []
 
 class BasketView(APIView):
     """

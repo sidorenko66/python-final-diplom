@@ -44,7 +44,7 @@ class ProductParameterSerializer(serializers.ModelSerializer):
         model = ProductParameter
         fields = ('parameter', 'value',)
         
-class ProductInfo2Serializer(serializers.ModelSerializer):
+class ProductInfoForProductSerializer(serializers.ModelSerializer):
     product_parameters = ProductParameterSerializer(read_only=True, many=True)
 
     class Meta:
@@ -54,7 +54,7 @@ class ProductInfo2Serializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
-    product_infos = ProductInfo2Serializer(many=True)
+    product_infos = ProductInfoForProductSerializer(many=True)
 
     class Meta:
         model = Product

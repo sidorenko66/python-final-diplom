@@ -14,7 +14,7 @@ content-type: application/json
 
 POST http://127.0.0.1:8000/api/v1/partner/update
 content-type: application/json
-Authorization: token e86a64cf093e68722a5aa9dab7518b51ad24fa56
+Authorization: token 47620a4eb8de2a3f0b453243cd277d8aecbc588b
 
 {"url": "https://www.helpanimals.ru/shop1.yaml"}
 
@@ -28,10 +28,17 @@ GET http://127.0.0.1:8000/api/v1/products
 
 ###
 
+GET http://127.0.0.1:8000/api/v1/products?shop_id=2
+
+###
+
 GET http://127.0.0.1:8000/api/v1/products/3
 
 ###
 
+GET http://127.0.0.1:8000/api/v1/product/3
+
+###
 
 GET http://127.0.0.1:8000/api/v1/basket
 content-type: application/json

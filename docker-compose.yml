@@ -13,15 +13,15 @@ services:
     ports:
       - "5432:5432"
 
-  app:
-    build: .
-    container_name: app-c
-    networks:
-      - net
-    ports:
-      - "8000:8000"
-    depends_on:
-      - postgredb
+  # app:
+  #   build: .
+  #   container_name: app-c
+  #   networks:
+  #     - net
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - postgredb
 
   redis:
     image: redis

@@ -8,3 +8,7 @@ ujson
 requests
 celery
 redis
+gjango-filter
+pytest
+pytest-django
+pytest-cov
